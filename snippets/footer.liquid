@@ -1,0 +1,94 @@
+<!-- footer content here start-->
+
+<div class="container bs-example padding-wrapper-unavailable" style="margin-top: 30px; margin-bottom: 30px;">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="footer-newsletter row-fluid" style="padding: 0px">
+                <div class="footer-newsletter-wrapper footer-joinus-text text-left col-xs-12">
+                    <span>JOIN US</span>
+                </div>
+                <div class='row-fluid'>
+                    <div class="footer-email-wrapper email-field-footer col-xs-12 col-md-12 col-sm-12">
+                        <form class="form-horizontal delete-margin-bottom" role="form">
+                            <div class="form-group delete-margin-bottom">
+                                <div class=" col-md-10 col-sm-10 col-xs-12 wrapper-email-field no-padding-available">
+                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email....">
+                                </div>
+                                <button type="submit" class="btn col-md-2 col-sm-2 col-xs-12 join-us-button">JOIN US!
+                                  <img class="shop-funky-button-extended" alt="Second slide" src={{'2.png'| asset_url}} style="left: 86px; top: -11px;">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="footer-newsletter">
+                <div class="footer-newsletter-wrapper footer-joinus-text text-left col-xs-12">
+                    <span>FOLLOW US</span>
+                </div>
+                <div class='row-fluid'>
+                    <div class="footer-newsletter-wrapper social-media-field-footer col-xs-12 col-md-12 col-sm-12">
+                        <ul class="list-inline delete-margin-bottom font-social-media">
+                            {% if settings.instagram_link != blank %}<li><a href="{{settings.instagram_link}}">INSTAGRAM</a></li>{% endif%}
+                            {% if settings.facebook_link != blank %}<li><a href="{{settings.facebook_link}}">FACEBOOK</a></li> {% endif%}
+                            {% if settings.pinterest_link != blank %}<li><a href="{{settings.pinterest_link}}">PINTEREST</a></li>{% endif%}
+                            {% if settings.tumblr_link != blank %}<li><a href="{{settings.tumblr_link}}">TUMBLR</a></li>{% endif%}
+                            {% if settings.twitter_link != blank %}<li><a href="{{settings.twitter_link}}">TWITTER</a></li>{% endif%}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron" style="background: #C5BBB4">
+    <div class="container footer-menu-info">
+        <!--<div class="row">-->
+            <div class="col-md-3 col-xs-12 col-sm-3">
+                <ul class="list-unstyled">
+                    <li><h3>OFF THE CUFF</h3></li>
+                    <li>209 West Street</li>
+                    <li>Annapolis MD 1401</li>
+                    <li>Berlin.</li>
+                    <li>888.8888.888</li>
+                    <li>info@offthecuffshop.com</li>
+                </ul>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-md-3 col-xs-12 col-sm-3">
+                <ul class="list-unstyled">
+                    <li><h3>MENU</h3></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Lookbooks</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Sale</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-md-3 col-xs-12 col-sm-3">
+                <ul class="list-unstyled">
+                    <li><h3>INFO</h3></li>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">F.A.Q</a></li>
+                    <li><a href="#">Size Guides</a></li>
+                </ul>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-md-3 col-xs-12 col-sm-3">
+                <div class='row-fluid'>
+                    <div class="pin-it-wrapper col-md-offset-1">
+                        <a href="http://pinterest.com/pin/create/button/?url={Permalink}&description={PostTitle}" class="pin-it-button btn btn-danger" count-layout="horizontal" style="top: 15px; left: 35px;">Pin It</a>
+                    </div>
+                    <div class="pin-it-image-wrapper">
+                      <img class="img-responsive pin-it-image" data-src="holder.js/140x140" src={{'pin_it.jpg' | asset_url}} alt="Generic placeholder image" style="height: 175px; width: 240px">
+                    </div>
+                </div>
+            </div><!-- /.col-lg-4 -->
+        <!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
+    </div>
+</div>
+{% include 'copyright' %}

@@ -1,0 +1,45 @@
+<div class="container">
+      <div class="row">
+          <!--<div class="">-->
+              <h1 class="text-center info-label-font">INFORMATION <span class="label label-default"></span></h1>
+              <p class="text-center contact-text-font">Find all the info you need</p>
+          <!--</div>-->
+      </div>
+      <!-- content -->
+      <div class="row info-border-wrap information-lists-section">
+          <div class=" col-md-3 col-xs-12">
+                 <div class="col-md-12 col-xs-12 col-sm-6">
+                     <ul class="list-unstyled">
+                         <li><h3>Customer Info</h3></li>
+                         {% for link in linklists.customer-info.links %}
+                         <li class="{% if link.url == page.url%} active {% endif %}" ><a class="{% if link.url == page.url%} active {% endif %}" href="{{link.url}}">{{link.title}}</a></li>
+                         {% endfor %}
+                     </ul>
+                 </div>
+
+                 <div class="col-md-12 col-xs-12 col-sm-6">
+                     <ul class="list-unstyled">
+                         <li><h3>Size Guides</h3></li>
+                         {% for link in linklists.size-guides.links %}
+                         <li class="{% if link.url == page.url%} active {% endif %}"><a href="{{link.url}}">{{link.title}}</a></li>
+                         {% endfor %}
+                     </ul>
+                 </div>
+          </div>
+
+          <div class=" col-md-9 col-xs-12">
+              <div class="row info-text-wrapper" id="information-page-aligning">
+                  <p class="lead">DELIVERY & SHIPPING INFO</p>
+                  <p class="list-group-item-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p><br>
+                  <p class="list-group-item-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p><br>
+                  <p class="list-group-item-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>

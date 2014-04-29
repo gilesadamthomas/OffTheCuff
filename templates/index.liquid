@@ -1,0 +1,85 @@
+{% if settings.slide_1 != false or settings.slide_2 != false or settings.slide_3 != false or settings.slide_4 != false %}
+<!-- Begin slider -->
+<div class="container bs-example">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active" ></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2" ></li>
+        </ol>
+        <div class="carousel-inner">
+          {% for i in (1..4) %}
+            {% capture show_slide %}slide_{{ i }}{% endcapture %}
+            {% capture image %}slideshow_{{ i }}.jpg{% endcapture %}
+            {% capture link %}slide_{{ i }}_link{% endcapture %}
+            {% capture alt %}slide_{{ i }}_alt{% endcapture %}
+            {% if settings[show_slide] %}
+          <div class="item {% if i==1 %} active {% endif %}">
+                <img src="{{ image | asset_url }}" alt="First slide" class="slider-image">
+            </div>
+           {% endif%}
+          {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- End slider -->
+{% endif %}
+<div class="jumbotron" style="background: #F2EDEA" id="jumbotron-width">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class='row-fluid'>
+                    <img class="img-responsive" data-src="holder.js/140x140" src="img/shop.jpg" alt="Generic placeholder image" style="height: 300px; width: 375px">
+                </div>
+                <div class='row-fluid'>
+                    <div class="featured-image-text"><span>SHOP</span></div>
+                </div>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-sm-4">
+                <div class='row-fluid'>
+                    <img class="img-responsive" data-src="holder.js/140x140" src="img/lookbook.jpg" alt="Generic placeholder image" style="height: 300px; width: 375px">
+                </div>
+                <div class='row-fluid'>
+                    <div class="featured-image-text"><span>LOOKBOOK</span></div>
+                </div>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-sm-4">
+                <div class='row-fluid'>
+                    <img class="img-responsive" data-src="holder.js/140x140" src="img/style.jpg" alt="Generic placeholder image" style="height: 300px; width: 375px">
+                </div>
+                <div class='row-fluid'>
+                    <div class="featured-image-text"><span>SALE</span></div>
+                </div>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+        <br><br>
+        {% if linklists.featured-collections.links.size > 0 %}
+        <div class="featured-image-slider">
+          <div class="wrapper">
+            <div class="jcarousel-wrapper" style="border-width: 40px 60px">
+              <div class="jcarousel padding-for-featured-slider">
+                <ul>
+                  {% for link in linklists.featured-collections.links %}
+                  <li><img src="{{ link.object.featured_image | product_img_url: 'original'}}" 
+                        alt="{{ link.object.title | escape }}" class="featured-image-slider-ratio"></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <a href="javascript:void(0);" class="jcarousel-control-prev" style="left: -50px"><img src="{{'arrow.png' | asset_url }}"></a>
+              <a href="javascript:void(0);" class="jcarousel-control-next" style="right: -40px"><img src="{{'arrow.png' | asset_url }}"></a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+  </div>
+</div>
+
+<script>
+    $(function() {
+        $('.carousel').carousel()
+        {
+            interval: 500;
+        }
+    });
+
+</script>
