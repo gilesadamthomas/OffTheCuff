@@ -1,6 +1,6 @@
 <!-- logo here start-->
 <div class="container-fluid">
-    <h1><a class="header-logo">off the cuff</a></h1>
+  <h1><a href ="/" class="header-logo">off the cuff</a></h1>
 </div>
 <!-- logo here end-->
 
@@ -19,11 +19,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse span12" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="divider-right"><a href="#">ABOUT</a></li>
-                <li class="active divider-right"><a href="#">LOOKBOOKS</a></li>
-                <li class="divider-right"><a href="#">SHOP</a></li>
-                <li class="divider-right"><a href="#">SALE</a></li>
-                <li class="divider-right"><a href="#">POP UP SHOPS</a></li>
+              {% for link in linklists.header.links%}  
+              	<li class="divider-right {% if link.url == page.url%} active {% endif %}"><a href="{{link.url}}">{{link.title}}</a></li>
+              {% endfor %}  
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group" style="position: relative">
@@ -33,7 +31,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="divider-right" style="border-left: 1px solid #f3f3f3"><a href="#"><i class="glyphicon glyphicon-user icon-padding"></i>  ACCOUNT</a></li>
                 <li class="divider-right"><a href="#"><i class="glyphicon glyphicon-usd icon-padding"></i>  CURRENCY</a></li>
-                <li class="divider-right"><a href="#"><i class="glyphicon glyphicon-shopping-cart icon-padding"></i>  CART</a></li>
+              <li class="divider-right"><a href="/cart"><i class="glyphicon glyphicon-shopping-cart icon-padding"></i>  CART</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

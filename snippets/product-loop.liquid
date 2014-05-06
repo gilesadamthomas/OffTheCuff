@@ -1,36 +1,15 @@
 {% capture collection_handle %}{{ product-loop | handleize }}{% endcapture %}
 {% capture url %}{% if collection_handle != "" %}/collections/{{ product-loop }}{{ product.url }}{% else %}{{ product.url }}{% endif %}{% endcapture %}
-<div class="product span4">
-  
-  {% if product.price_min < product.compare_at_price_min %}
-    <span class="circle sale">Sale</span>
-  {% endif %}
-  
-  <div class="image">
-    <a href="{{ url }}">
-      <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" />
-    </a>
-  </div>
-  
-  <div class="details">
-    <a href="{{ url }}" class="clearfix">
-      <h4 class="title">{{ product.title }}</h4>
-      
-      <span class="price">
-      {% if product.available %}
-        {% if product.compare_at_price_max > product.price %}
-          <del>{{ product.compare_at_price | money }}</del>
-        {% endif %}
-        {% if product.price_varies %}
-        <small><em>from</em></small>
-        {% endif %}
-        {{ product.price | money }}
-      {% else %}
-        {{ product.price | money }} Sold Out
-      {% endif %}
-      </span>
-    </a>
-  </div>
-</div>
-
-{% cycle 'clear-product-loop': '', '', '<div style="clear:both;"></div>' %}
+<div class="col-md-4 col-xs-12 col-sm-4">
+                    <div class='row-fluid'>
+                      <a href="{{ product.url }}">
+                      <img class="img-responsive" src="{{product.featured_image.src | product_img_url: '260x385' }}" alt="Generic placeholder image" style="width: 260px; height: 385px">
+                      </a>
+                    </div>
+                    <!--<div class='row-fluid'>-->
+                  <div class="shop-image-text">
+                    <a href="{{product.url}}"><span class="item-name-font-family">{{product.title}}</span></a><br>
+                    <span class="item-price-font-family">{{product.price}}</span>
+                  </div>
+                    <!--</div>-->
+                </div>

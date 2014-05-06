@@ -61,21 +61,17 @@
             <div class="col-md-3 col-xs-12 col-sm-3">
                 <ul class="list-unstyled">
                     <li><h3>MENU</h3></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Lookbooks</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Sale</a></li>
-                    <li><a href="#">Contact</a></li>
+                    {% for link in linklists.main-menu.links %}
+                       <li><a href="{{link.url}}">{{link.title}}</a></li>
+                    {% endfor %}
                 </ul>
             </div><!-- /.col-lg-4 -->
             <div class="col-md-3 col-xs-12 col-sm-3">
                 <ul class="list-unstyled">
                     <li><h3>INFO</h3></li>
-                    <li><a href="#">Delivery</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">F.A.Q</a></li>
-                    <li><a href="#">Size Guides</a></li>
+                    {% for link in linklists.info.links %}
+                       <li><a href="{{link.url}}">{{link.title}}</a></li>
+                    {% endfor %}
                 </ul>
             </div><!-- /.col-lg-4 -->
             <div class="col-md-3 col-xs-12 col-sm-3">
@@ -84,7 +80,7 @@
                         <a href="http://pinterest.com/pin/create/button/?url={Permalink}&description={PostTitle}" class="pin-it-button btn btn-danger" count-layout="horizontal" style="top: 15px; left: 35px;">Pin It</a>
                     </div>
                     <div class="pin-it-image-wrapper">
-                      <img class="img-responsive pin-it-image" data-src="holder.js/140x140" src={{'pin_it.jpg' | asset_url}} alt="Generic placeholder image" style="height: 175px; width: 240px">
+                      <img class="img-responsive pin-it-image" src={{'pin_it.jpg' | asset_url}} alt="Generic placeholder image" style="height: 175px; width: 240px">
                     </div>
                 </div>
             </div><!-- /.col-lg-4 -->

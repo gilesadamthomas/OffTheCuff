@@ -58,10 +58,7 @@
     background-repeat: repeat-x;
     box-shadow: none;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    background-color: #FFFFFF;
-    color: #E80396;
-}
+
 .navbar{
     border-radius: 0px;
 }
@@ -85,6 +82,8 @@
 .bs-example{
     width: 90%;
     margin: 0 auto;
+  margin-bottom: 60px;
+    margin-top: 40px;
 }
 .carousel-inner{
     width: 100%;
@@ -222,10 +221,6 @@
 .font-social-media{
     font-family: 'Swanky and Moo Moo';
     font-size: 20px;
-}
-.active a{
-    background-color: #FFFFFF;
-    color: #E80396;
 }
 .lookbook-image{
     max-height: 605px;
@@ -394,6 +389,7 @@
     width: 170px;
     height: 60px;
     border-radius: 0px;
+    margin-top: 20px;
 }
 .checkout-button:hover{
     background-color: #000000;
@@ -403,6 +399,7 @@
     width: 170px;
     height: 60px;
     border-radius: 0px;
+  margin-top: 20px;
 }
 .jcarousel-control-prev{
     background: white !important;
@@ -533,13 +530,17 @@
 .product-description{
     margin-top: 30px;
 }
+.product-description p{
+    font-family: proximanova-light;
+  font-size: 16px;
+}
 .product-collection{
     margin-top: 40px;
     padding-bottom: 40px;
     border-bottom: 2px solid #ECECEC;
 }
-.product-collection h2{
-    margin-bottom: 40px;
+.related-products-header h2{
+    margin-bottom: 20px;
     font-family: 'Swanky and Moo Moo', cursive;
     font-size: 50px;
 }
@@ -558,6 +559,9 @@
 .product-options li{
     width: 120px;
     padding-right: 20px;
+}
+.product-options{
+    margin-top: 50px;
 }
 .bootstrap-select > .btn {
     padding-right: 25px;
@@ -667,7 +671,7 @@ book-text-font{
 }
 .top-navbar-wrapper li{
     font-family: mplus-light;
-    font-size: 18px;
+    font-size: 20px;
 }
 .home-page-three-image-wrap{
     margin-bottom: 40px;
@@ -694,7 +698,7 @@ book-text-font{
 .information-lists-section li a{
         font-size: 16px;
         font-family: proximanova-light;
-        color: #000000 !important;
+        color: #000000;
         text-decoration: none;
     }
 .info-text-wrapper{
@@ -710,3 +714,22 @@ book-text-font{
         font-family: proximanova-light;
         line-height: 1.5;
     }
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #FFFFFF;
+    color: #E80396;
+}
+.active a{
+    background-color: #FFFFFF;
+    color: #E80396 !important;
+}
+.social{
+	margin-top: 50px;
+}
+.copyright-logo{
+  	display: block;
+  	background: url({{'pay_methods.jpg' | asset_url}}) no-repeat;
+    width: 410px;
+    height: 50px;
+    text-indent: -9999px;
+    margin: 0 auto;
+}

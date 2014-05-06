@@ -18,7 +18,7 @@
                 <ul class="list-unstyled">
                     <li><h3 class="tops-header-text">Tops</h3></li>
                     {% for link in linklists.tops.links %}
-                         <li class="{% if link.url == collection.url%} active {% endif %}"><a class="{% if link.url == page.url%} active {% endif %}" href="{{link.url}}">{{link.title}}</a></li>
+                         <li class="{% if link.url == page.url%} active {% endif %}" ><a class="{% if link.url == page.url%} active {% endif %}" href="{{link.url}}">{{link.title}}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -26,9 +26,9 @@
             <div class="col-md-12 col-xs-12 col-sm-2 shop-container-border" id="wrapper-tops-section">
                 <ul class="list-unstyled">
                     <li><h3 class="tops-header-text">Outwear</h3></li>
-                    {% for link in linklists.outwear.links %}
-                         <li class="{% if link.url == collection.url%} active {% endif %}"><a class="{% if link.url == page.url%} active {% endif %}" href="{{link.url}}">{{link.title}}</a></li>
-                    {% endfor %}
+                    <li><a href="#">Jackets</a></li>
+                    <li><a href="#">Coats</a></li>
+                    <li><a href="#">Blazers</a></li>
                 </ul>
             </div>
 
@@ -44,14 +44,39 @@
                </div>
             </div>
         </div>
-{% paginate collection.products by settings.pagination_limit %}
+
         <div class="col-md-9 col-xs-12 col-sm-12 shop-image-portion" style="border-bottom: 2px solid #ECECEC; margin-top: 25px">
-          {% for product in collection.products limit: settings.pagination_limit %}
-    		{% include 'product-loop' with collection.handle %}
-    	  {% endfor %}
+          {% paginate collections.all.products by 9 %}
+          {% for product in collections.all.products limit: 9 %}	    
+          <div class="col-md-4 col-xs-12 col-sm-4">
+                    <div class='row-fluid'>
+                      <a href="{{ product.url }}">
+                        <img class="img-responsive" src="{{product.featured_image.src | product_img_url: '260x385' }}" alt="Generic placeholder image" style="width: 260px; height: 385px">
+                      </a>
+                    </div>
+                    <!--<div class='row-fluid'>-->
+                  <div class="shop-image-text">
+                    <a href="{{product.url}}"><span class="item-name-font-family">{{product.title}}</span></a><br>
+                    <span class="item-price-font-family">{{product.price}}</span>
+                  </div>
+                    <!--</div>-->
+                </div>
+          {% endfor %}
           
         </div>
   </div>  
-  {% include 'pagination'%}
-  {% endpaginate %}
+    <div class="row">
+        <ul class="pagination pull-right delete-border-pagination">
+          {% assign c = 0 %}   
+          {% for part in paginate.parts %}
+                <li><span>{{ part.title | link_to: part.url}}</span></li>  
+                {% if collections.all.products.size/9 != c %}      
+                <li><span>-</span></li>
+                {% endif%}
+          		{% assign c = c+1 %}
+ 			 {% endfor %}
+             
+            {% endpaginate %}
+        </ul>
+    </div>
 </div>

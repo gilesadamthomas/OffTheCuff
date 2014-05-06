@@ -1,19 +1,18 @@
 {% if paginate.pages > 1 %}
 <div class="row">
   <div>
-    <ul class="pagination clearfix">
-    {% if paginate.previous %}
-    	<li><a href="{{ paginate.previous.url }}" class="prev">Previous</a></li>
-    {% else %}
-    	<li><span>{{ back_word }}</span></li>
-    {% endif %}
-    	<li>Page {{ paginate.current_page }} of {{ paginate.pages }}</li>
-    {% if paginate.next %}
-    	<li><a href="{{ paginate.next.url }}" class="next">Next</a></li>
-    {% else %}
-    	<li><span>{{ next_word }}</span></li>
-    {% endif %}
+    <ul class="pagination pull-right delete-border-pagination">
+    {% assign c = 0 %}   
+          {% for part in paginate.parts %}
+                <li><span>{{ part.title | link_to: part.url}}</span></li>  
+                {% if collections.all.products.size/9 != c %}      
+                <li><span>-</span></li>
+                {% endif%}
+          		{% assign c = c+1 %}
+ 			 {% endfor %}
     </ul>
   </div>
 </div> 
 {% endif %}
+
+

@@ -1,4 +1,4 @@
-{% assign number_of_related_products_to_show = 3 %}
+{% assign number_of_related_products_to_show = 4 %}
 
 {% assign number_of_related_products_to_fetch = number_of_related_products_to_show | plus: 1 %}
   
@@ -14,13 +14,13 @@
 
 {% if collection and collection.products_count > 1 %}
     
-<div class="row">
+<div class="row related-products-header">
   <div class="span12">
-    <h3 class="collection-title">Related products</h3>
+    <h2 class="text-left col-sm-12 col-xs-12">FROM THE COLLECTION</h2>
   </div>
 </div> 
     
-<div class="row products">
+<div class="row products product-collection">
 
 {% assign current_product = product %}
 {% assign current_product_found = false %}
@@ -29,7 +29,11 @@
     {% assign current_product_found = true %}
   {% else %}
     {% unless current_product_found == false and forloop.last %}
-      {% include 'product-loop' with collection.handle %}
+      <div class="col-sm-6 col-xs-12 col-md-3">
+        <a href={{product.url}} >
+        <img class="img-responsive" src="{{product.featured_image.src | product_img_url: '260x385' }}" alt="Generic placeholder image" style="width: 260px; height: 385px">
+        </a>
+        </div>
     {% endunless %}
   {% endif %}
 {% endfor %}
@@ -37,3 +41,4 @@
 </div>
 
 {% endif %}
+

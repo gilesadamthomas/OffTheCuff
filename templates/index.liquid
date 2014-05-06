@@ -1,29 +1,32 @@
+<!-- Begin slider -->
 {% if settings.slide_1 != false or settings.slide_2 != false or settings.slide_3 != false or settings.slide_4 != false %}
 <!-- Begin slider -->
-<div class="container bs-example">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active" ></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2" ></li>
-        </ol>
-        <div class="carousel-inner">
-          {% for i in (1..4) %}
-            {% capture show_slide %}slide_{{ i }}{% endcapture %}
-            {% capture image %}slideshow_{{ i }}.jpg{% endcapture %}
-            {% capture link %}slide_{{ i }}_link{% endcapture %}
-            {% capture alt %}slide_{{ i }}_alt{% endcapture %}
-            {% if settings[show_slide] %}
-          <div class="item {% if i==1 %} active {% endif %}">
-                <img src="{{ image | asset_url }}" alt="First slide" class="slider-image">
-            </div>
-           {% endif%}
-          {% endfor %}
-        </div>
+<div class="container bs-example padding-wrapper-unavailable">
+  <div class="flexslider-container">
+    <div class="flexslider">
+      <ul class="slides">
+        {% for i in (1..4) %}
+          {% capture show_slide %}slide_{{ i }}{% endcapture %}
+          {% capture image %}slideshow_{{ i }}.jpg{% endcapture %}
+          {% capture link %}slide_{{ i }}_link{% endcapture %}
+          {% capture alt %}slide_{{ i }}_alt{% endcapture %}
+          {% if settings[show_slide] %}
+          <li>
+            <a href="{{ settings[link] }}">
+              <img class= "slider-image" src="{{ image | asset_url }}" alt="{{ settings[alt] | escape }}" />
+            </a>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      
     </div>
+  </div>
 </div>
 <!-- End slider -->
 {% endif %}
+<!-- End slider -->
+
 <div class="jumbotron" style="background: #F2EDEA" id="jumbotron-width">
     <div class="container">
         <div class="row">
@@ -60,8 +63,8 @@
               <div class="jcarousel padding-for-featured-slider">
                 <ul>
                   {% for link in linklists.featured-collections.links %}
-                  <li><img src="{{ link.object.featured_image | product_img_url: 'original'}}" 
-                        alt="{{ link.object.title | escape }}" class="featured-image-slider-ratio"></li>
+                  <li><a href="{{link.object.product.url}}"><img src="{{ link.object.featured_image | product_img_url: 'original'}}" 
+                                                              alt="{{ link.object.title | escape }}" class="featured-image-slider-ratio"></li></a>
                   {% endfor %}
                 </ul>
               </div>
