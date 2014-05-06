@@ -63,7 +63,7 @@
               <div class="jcarousel padding-for-featured-slider">
                 <ul>
                   {% for link in linklists.featured-collections.links %}
-                  <li><a href="{{link.object.url}}"><img src="{{ link.object.featured_image | product_img_url: 'original'}}" 
+                  <li><a href="{{link.object.product.url}}"><img src="{{ link.object.featured_image | product_img_url: 'original'}}" 
                                                               alt="{{ link.object.title | escape }}" class="featured-image-slider-ratio"></li></a>
                   {% endfor %}
                 </ul>
