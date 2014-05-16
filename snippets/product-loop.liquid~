@@ -9,7 +9,7 @@
                     <!--<div class='row-fluid'>-->
                   <div class="shop-image-text">
                     <a href="{{product.url}}"><span class="item-name-font-family">{{product.title}}</span></a><br>
-                    <span class="item-price-font-family">{{product.price | money_with_currency}}</span>
+                    <span class="item-price-font-family">{{product.price}}</span>
                   </div>
                     <!--</div>-->
                 </div>
