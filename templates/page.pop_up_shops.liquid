@@ -1,0 +1,21 @@
+<div class="container pop-up-shop-page">
+    <div class="row">
+        <h1 class="text-center info-label-font">WELCOME TO THE POP UP SHOPS <span class="label label-default"></span></h1>
+        <p class="text-center shop-welcome-text">CHECK OUT OUR NEW COLLECTION</p>
+    </div>
+    <!-- content -->
+    <div class="row info-border-wrap">
+        <div class="row pop-up-border-to-image-margin">
+          {% for link in linklists.featured-collections.links %}  
+          <div class="col-md-4 col-xs-12 col-sm-4 pop-shop-wrapper">
+                <div class='row-fluid'>
+                  <a href="{{link.object.url}}"><img class="img-responsive" src="{{link.object.featured_image | product_img_url: 'master' }}" alt="Generic placeholder image" style="height: 365px; width: 365px"></a>
+                  </div>
+                <div class='row-fluid'>
+                    <div class="pop-up-shop-image-text"><span>12 July 2014</span></div>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+<meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+  
+<div class="container">
+    <div class="row">
+        <div class="single-page-free-shipping">
+            <p class="text-center">FREE UK SHIPPING ON ORDERS MORE THAN € 50.00</p>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="row product-name-price" style="padding-bottom: 50px">
+        <div class="col-md-6 col-sm-6 col-xs-12 padding-wrapper-unavailable">
+            {% if settings.enable_product_image_zoom %}
+        <a href="{{ product.image | product_img_url: 'original' }}" class="cloud-zoom" rel="position: 'inside', showTitle: 'false'" id="placeholder">
+          <img src="{{ product.featured_image | product_img_url: 'original' }}" alt="{{ product.featured_image.alt | escape }}" class="lookbook-image"/>
+        </a>
+        {% else %}
+        <a href="{{ product.featured_image | product_img_url: 'original' }}" class="zoom" id="placeholder">
+          <img src="{{ product.featured_image | product_img_url: '585x605' }}" alt="{{ product.featured_image.alt | escape }}" />
+        </a>
+        {% endif %}
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 wrapper-single-product">
+           <div class="product-name-price">
+             <p class="product-name">{{product.title}}</p>
+               <p class="product-price">€ {{product.price}}</p>
+           </div>
+          {% if product.description.size > 0%} 
+           <div class="product-description">
+                <h4>Description</h4><br>
+              {{product.description}}
+           </div>
+          {% endif %}
+           <div class="product-options">
+             {% if product.available %}
+             <form action="/cart/add" method="post" class="form-inline" role="form">
+               <ul class="list-inline">
+               {% if product.variants.size > 0 %}
+                 <li>
+                   <select class="selectpicker" value='Size' id="product-select" name='id'>
+                   {% for variant in product.variants %}
+                   <option value="{{ variant.id }}">{{ variant.option2 }}</option>
+                   {% endfor %}
+                   </select>
+                 </li>
+                 <li>
+                   <select class="selectpicker" value='Color' id="product-select" name='id'>
+                   {% for variant in product.variants %}
+                   <option value="{{ variant.id }}">{{ variant.option3 }}</option>
+                   {% endfor %}
+                   </select>
+                 </li>
+                 {% endif %}
+                 <li>
+                 {% if settings.display_quantity_dropdown %}
+                  <div class="selector-wrapper">
+                    <label>Quantity</label>
+                    <input id="quantity" type="number" name="quantity" value="1" class="tc item-quantity" />
+                  </div>
+                 {% endif %}
+                 </li>
+               </ul><!-- product-variants -->
+               <input type="submit" value="Add to Cart" id="addtocart" class="btn checkout-button"/>
+             </form>
+             {% else %}
+                Sorry, the product is not available
+             {% endif %}
+           </div>
+          
+           <div class="social">
+              {% include 'like' %}
+            </div> 
+        </div>
+    </div>
+     {% if settings.show_related_products %}
+        {% include 'related-products' %}
+      {% endif %}  
+    
+</div>
+
+<script>
+  $(function() {
+        $('.selectpicker').selectpicker();
+    });
+  
+</script>

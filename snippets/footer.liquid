@@ -8,14 +8,14 @@
                     <span>JOIN US</span>
                 </div>
                 <div class='row-fluid'>
-                    <div class="footer-email-wrapper email-field-footer col-xs-12 col-md-12 col-sm-12">
-                        <form class="form-horizontal delete-margin-bottom" role="form">
+                    <div id="mc_embed_signup" class="footer-email-wrapper email-field-footer col-xs-12 col-md-12 col-sm-12">
+                        <form action="{{ settings.mailing_list_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-horizontal delete-margin-bottom" role="form" target="_blank">
                             <div class="form-group delete-margin-bottom">
-                                <div class=" col-md-10 col-sm-10 col-xs-12 wrapper-email-field no-padding-available">
-                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email....">
+                                <div class="mc-field-group col-md-10 col-sm-10 col-xs-12 wrapper-email-field no-padding-available">
+                                    <input type="email" class="form-control" id="mail exampleInputEmail2" placeholder="Email....">
                                 </div>
-                                <button type="submit" class="btn col-md-2 col-sm-2 col-xs-12 join-us-button">JOIN US!
-                                  <img class="shop-funky-button-extended" alt="Second slide" src={{'2.png'| asset_url}} style="left: 86px; top: -11px;">
+                                <button id="mc-embedded-subscribe" type="submit" class="btn col-md-2 col-sm-2 col-xs-12 join-us-button">JOIN US!
+                                  <img class="join-us-button-extended" alt="Second slide" src={{'2.png'| asset_url}} style="right: -2px; top: -11px;">
                                 </button>
                             </div>
                         </form>
@@ -56,6 +56,7 @@
                     <li>Berlin.</li>
                     <li>888.8888.888</li>
                     <li>info@offthecuffshop.com</li>
+                  	<li>{% include 'currencies-switcher' %}</li>
                 </ul>
             </div><!-- /.col-lg-4 -->
             <div class="col-md-3 col-xs-12 col-sm-3">
@@ -77,7 +78,10 @@
             <div class="col-md-3 col-xs-12 col-sm-3">
                 <div class='row-fluid'>
                     <div class="pin-it-wrapper col-md-offset-1">
-                        <a href="http://pinterest.com/pin/create/button/?url={Permalink}&description={PostTitle}" class="pin-it-button btn btn-danger" count-layout="horizontal" style="top: 15px; left: 35px;">Pin It</a>
+                      <a id="pin-it-real-button" href="javascript:void(0);" class="pin-it-button btn btn-danger" count-layout="horizontal" style="top: 15px; left: 35px;">Pin It</a>
+                      <div style="display: none !important;">
+                      	<a href="" id="fake-pin-it-button"></a>
+                      </div>
                     </div>
                     <div class="pin-it-image-wrapper">
                       <img class="img-responsive pin-it-image" src={{'pin_it.jpg' | asset_url}} alt="Generic placeholder image" style="height: 175px; width: 240px">

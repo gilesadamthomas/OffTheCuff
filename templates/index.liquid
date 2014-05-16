@@ -3,7 +3,8 @@
 <!-- Begin slider -->
 <div class="container bs-example padding-wrapper-unavailable">
   <div class="flexslider-container">
-    <div class="flexslider">
+    <section class="slider">
+      <div class="flexslider">
       <ul class="slides">
         {% for i in (1..4) %}
           {% capture show_slide %}slide_{{ i }}{% endcapture %}
@@ -19,8 +20,8 @@
           {% endif %}
         {% endfor %}
       </ul>
-      
     </div>
+    </section>
   </div>
 </div>
 <!-- End slider -->
@@ -30,31 +31,27 @@
 <div class="jumbotron" style="background: #F2EDEA" id="jumbotron-width">
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+          {% for link in linklists.home-featured.links %}  
+          <div class="col-sm-4">
                 <div class='row-fluid'>
-                    <img class="img-responsive" data-src="holder.js/140x140" src="img/shop.jpg" alt="Generic placeholder image" style="height: 300px; width: 375px">
+                  {% if link.title == 'SHOP'%}
+                  <a href="{{link.url}}"><img class="img-responsive" src="{{'shopy.jpg' | asset_url }}" alt="Generic placeholder image" style="height: 300px; width: 375px"></a>
+                  {% endif %}
+                  {% if link.title == 'LOOKBOOK'%}
+                    <a href="{{link.url}}"><img class="img-responsive" src="{{'lookbook.jpg' | asset_url }}" alt="Generic placeholder image" style="height: 300px; width: 375px"></a>
+                  {% endif %}
+                  {% if link.title == 'SALE'%}
+                    <a href="{{link.url}}"><img class="img-responsive" src="{{'sale.jpg' | asset_url }}" alt="Generic placeholder image" style="height: 300px; width: 375px"></a>
+                  {% endif %}
                 </div>
                 <div class='row-fluid'>
-                    <div class="featured-image-text"><span>SHOP</span></div>
-                </div>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-sm-4">
-                <div class='row-fluid'>
-                    <img class="img-responsive" data-src="holder.js/140x140" src="img/lookbook.jpg" alt="Generic placeholder image" style="height: 300px; width: 375px">
-                </div>
-                <div class='row-fluid'>
-                    <div class="featured-image-text"><span>LOOKBOOK</span></div>
-                </div>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-sm-4">
-                <div class='row-fluid'>
-                    <img class="img-responsive" data-src="holder.js/140x140" src="img/style.jpg" alt="Generic placeholder image" style="height: 300px; width: 375px">
-                </div>
-                <div class='row-fluid'>
-                    <div class="featured-image-text"><span>SALE</span></div>
+                  <a href="{{link.url}}"><div class="featured-image-text"><span>{{link.title}}</span></div></a>
                 </div>
             </div><!-- /.col-lg-4 -->
+            <!-- /.col-lg-4 -->
+          {% endfor %}
         </div><!-- /.row -->
+         
         <br><br>
         {% if linklists.featured-collections.links.size > 0 %}
         <div class="featured-image-slider">
@@ -63,8 +60,11 @@
               <div class="jcarousel padding-for-featured-slider">
                 <ul>
                   {% for link in linklists.featured-collections.links %}
-                  <li><a href="{{link.object.url}}"><img src="{{ link.object.featured_image | product_img_url: 'original'}}" 
-                                                              alt="{{ link.object.title | escape }}" class="featured-image-slider-ratio"></li></a>
+                  <li><a href="{{link.object.url}}">
+                    <img src="{{ link.object.featured_image | product_img_url: 'medium'}}" 
+                                                              alt="{{ link.object.title | escape }}" class="featured-image-slider-ratio">
+                    </a>
+                  </li>
                   {% endfor %}
                 </ul>
               </div>

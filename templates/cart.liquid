@@ -1,8 +1,10 @@
+
 <div class="container shopping-cart-page">
     <div class="row">
         <h1 class="text-left info-label-font">CART OVERVIEW <span class="label label-default"></span></h1>
     </div>
     <!-- content -->
+  	{% if cart.items.size > 0 %}
     <div class="row cart-table-wrapping">
         <div class="table-responsive">
           
@@ -22,7 +24,7 @@
                   <tr>
                     <td>
                         <div style="display: inline">
-                            <img src="{{ item.product.featured_image | product_img_url: '110x165' }}"  alt="{{ item.product.title }}" class="lookbook-image" style="height: 165px; width: 110px; margin: 0px 40px 0px 20px;">
+                            <img src="{{ item.product.featured_image | product_img_url: 'large' }}"  alt="{{ item.product.title }}" class="lookbook-image" style="height: 165px; width: 110px; margin: 0px 40px 0px 20px;">
                           
                         </div>
                       <a href="{{item.product.url}}"><p style="display: inline; color: #000000">{{item.product.title}}</p></a>
@@ -58,14 +60,13 @@
                       <a href="/collections/all" style="color: black"><p>Go back to shopping!</p></a>
                     </td>
                     <td class="col-md-2 text-center">
-                       <input style="color: black" type="submit" id="update-cart" class="" name="update" value="Update" />
-                      
+                       <a href="/collections/all" style="color: black"><p>Update</p></a>
                     </td>
                     <td class="col-md-2 text-center">
                         <p>€ {{ cart.total_price }}</p>
                     </td>
                     <td class="col-md-2 text-center">
-                         <input type="submit" id="checkout" class="btn checkout-button" name="checkout" value="CHECK OUT" />
+                      <input type="submit" id="checkout" style="margin-top: 0px" class="btn checkout-button" name="checkout" value="CHECK OUT" />
                     </td>
                 </tr>
                 </tbody>
@@ -73,4 +74,8 @@
           </form>
         </div>
     </div>
-    </div>
+    
+{% else %}
+  <h3 class="text-left">Your cart is empty</h3>
+{% endif %}
+</div>

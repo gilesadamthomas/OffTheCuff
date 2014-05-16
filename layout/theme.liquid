@@ -26,11 +26,10 @@
 
   <!-- {{ 'styles.css' | asset_url | stylesheet_tag }} -->
   {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
-  {{ 'bootstrap-select.css' | asset_url | stylesheet_tag }}
-  {{ 'bootstrap-select.js' | asset_url | script_tag }}
   {{ 'bootstrap-theme.min.css' | asset_url | stylesheet_tag }}
   {{ 'custom.css' | asset_url | stylesheet_tag }}
   {{ 'slideshow.css' | asset_url | stylesheet_tag }}
+  {{ 'flexslider.css' | asset_url | stylesheet_tag }}
   {{ 'jcarousel.responsive.css' | asset_url | stylesheet_tag}}
   {% if settings.header_font contains 'Google' %}
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family={{ settings.header_font | remove: 'Google+' }}:300,400,700">
@@ -58,18 +57,17 @@
   {{ 'jcarousel.responsive.js' | asset_url | script_tag}}
   {{ 'jquery.jcarousel.js' |asset_url | script_tag }}
   <link href='http://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo' rel='stylesheet' type='text/css'>
+	
+	
 </head>
 <body>
   {% include 'header' %}
-  {{ content_for_layout }}
-  {% include 'footer' %}
-</body>
-</html>
-{{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
+   {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
+{{ 'jquery.flexslider.js' | asset_url | script_tag }}
 
-  {% if settings.enable_product_image_zoom %}
-    {{ 'jquery.zoom.js' | asset_url | script_tag }}
-  {% endif %}
+  {% if template == 'product' %}
+	{{ 'jquery.zoom.js' | asset_url | script_tag }}
+	{% endif %}
   {{ 'jquery.tweet.js' | asset_url | script_tag }}
   {{ 'jquery.fancybox.js' | asset_url | script_tag }}
 <script>
@@ -109,3 +107,9 @@
 
   });
   </script>
+  {{ content_for_layout }}
+  
+  {% include 'footer' %}
+  {% include 'currencies' %}
+</body>
+</html>

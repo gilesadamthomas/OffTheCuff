@@ -23,17 +23,29 @@
               	<li class="divider-right {% if link.url == page.url%} active {% endif %}"><a href="{{link.url}}">{{link.title}}</a></li>
               {% endfor %}  
             </ul>
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" action="/search" method="get">
                 <div class="form-group" style="position: relative">
-                    <i class="glyphicon glyphicon-search icon-padding" style="position: absolute;top: 10px;"></i><input type="text" class="form-control modified-search-bar">
+                    <i class="glyphicon glyphicon-search icon-padding" style="position: absolute;top: 10px;" type="submit"></i>
+                  	<input type="text" name = "q" class="form-control modified-search-bar" value="{{ search.terms | escape }}">
                 </div>
             </form>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-left">
                 <li class="divider-right" style="border-left: 1px solid #f3f3f3"><a href="#"><i class="glyphicon glyphicon-user icon-padding"></i>  ACCOUNT</a></li>
-                <li class="divider-right"><a href="#"><i class="glyphicon glyphicon-usd icon-padding"></i>  CURRENCY</a></li>
-              <li class="divider-right"><a href="/cart"><i class="glyphicon glyphicon-shopping-cart icon-padding"></i>  CART</a></li>
+                <li class="divider-right">{% include 'currencies-switcher' %}</li>
+              <li><a href="/cart"><i class="glyphicon glyphicon-shopping-cart icon-padding"></i>  CART</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 <!-- this is header navbar -->
+
+<script type="text/javascript">
+     
+    $(document).ready(function(){
+      $('#pin-it-real-button').click(function(){
+        $("#fake-pin-it-button").attr('href', '//pinterest.com/pin/create/button/?url={{ shop.url }}{{ page.url }}');
+        $("#fake-pin-it-button")[0].click();
+
+      });    
+    });
+</script>

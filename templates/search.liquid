@@ -1,79 +1,101 @@
-<div id="search">
-  {% if search.performed %}
-  {% paginate search.results by settings.pagination_limit %}
-
+<div class="container shop-page">
+{% if search.performed %}
+  
   {% if search.terms == "" %}
-  <div class="row">
-    <div class="span12 expanded-message">
-      <div class="search-field">
-        <form class="search" action="/search">
-          <input type="image" src="{{ 'icon-search.png' | asset_url }}" alt="Go" id="go">
-          <input type="text" name="q" class="search_box" placeholder="Search" value=""  />
-        </form>
+    <div class="row">
+      <div class="span12 expanded-message">
+        {{ shop.url }}
       </div>
     </div>
-  </div>
   {% else %}
   
-  {% if search.results == empty %}
-  <div class="row">
-    <div class="span12 expanded-message">
-      <h2>No search results</h2>
-      <span class="subtext">Your search for <strong>"{{ search.terms }}"</strong> did not yield any results. Try searching for something else.</span>
-      <div class="search-field">
-        <form class="search" action="/search">
-          <input type="image" src="{{ 'icon-search.png' | asset_url }}" alt="Go" id="go">
-          <input type="text" name="q" class="search_box" placeholder="Search" value="{{ search.terms | escape }}"  />
-        </form>
+    {% if search.results == empty %}
+      <div class="row">
+        <div class="span12 expanded-message">
+          <h1 class="text-center info-label-font">No search results</h1>
+          <span class="subtext">Your search for <strong>"{{ search.terms }}"</strong> did not yield any results. Try searching for something else.</span>
+        </div>
       </div>
-    </div>
-  </div>
-  {% else %}
+    {% else %}
+    
+      <div class="row">
+        <div class="span12">
+          <h1 class="text-center info-label-font">Search Results</h1>
+        </div>
+      </div>	
+      <div class="row shop-container-border">
+          <div class="col-md-3 col-xs-12">
+              <div class="col-md-12 col-xs-12 col-sm-2">
+                  <ul class="list-unstyled">
+                      <li><h3 class="hot-stuff-text">Hot Stuff</h3></li>
+                      <!-- need a divider-->
+                  </ul>
+              </div>
   
-  <div class="row">
-    <div class="span12">
-      <h1>Search Results</h1>
-    </div>
-  </div>
+              <div class="col-md-12 col-xs-12 col-sm-2 shop-container-border" id="wrapper-tops-section">
+                  <ul class="list-unstyled">
+                      <li><h3 class="tops-header-text">Tops</h3></li>
+                      {% for link in linklists.tops.links %}
+                           <li><a class="{% if link.url == page.url%} active {% endif %}" href="{{link.url}}">{{link.title}}</a></li>
+                      {% endfor %}
+                  </ul>
+              </div>
   
-  <!-- Begin results -->
-  {% for item in search.results %}
-  <div class="row results">
-    <div class="span1">
-      <div class="thumbnail">
-        <a href="{{ item.url }}">{{ item.featured_image | product_img_url: 'small' | img_tag }}</a>
-      </div>
-    </div>
-    <div class="span11">
-      <div class="search-result">
-        <h3>{{ item.title | highlight: search.terms | link_to: item.url }}</h3>
-        {{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}
-      </div>
-    </div>
-    <hr class="divider" />
-  </div>
-  {% endfor %}
-  <!-- End results -->
+              <div class="col-md-12 col-xs-12 col-sm-2 shop-container-border" id="wrapper-tops-section">
+                  <ul class="list-unstyled">
+                      <li><h3 class="tops-header-text">Outwear</h3></li>
+                      {% for link in linklists.outwear.links %}
+                         <li class="{% if link.url == page.url%} active {% endif %}" ><a class="{% if link.url == page.url%} active {% endif %}" href="{{link.url}}">{{link.title}}</a></li>
+                    {% endfor %}
+                  </ul>
+              </div>
   
-  {% include 'pagination' %}
-
+              <div class="col-md-12 col-xs-12 col-sm-2 shop-container-border" id="wrapper-tops-section" style="border-bottom: 2px solid #ECECEC">
+                  <ul class="list-unstyled">
+                      <li><h3 class="hot-stuff-text tops-header-text">Vintage</h3></li>
+                  </ul>
+              </div>
+  
+              <div class="col-md-12 col-xs-12 col-sm-2 padding-wrapper-unavailable">
+                 <div class="notice-board">
+                     <p>FREE UK SHIPPING ON ORDERS MORE THAN € 50.00</p>
+                 </div>
+              </div>
+          </div>
+  			
+    <!-- Begin results -->
+  	<div class="col-md-9 col-xs-12 col-sm-12 shop-image-portion" style="border-bottom: 2px solid #ECECEC; margin-top: 25px">
+        {% paginate search.results by 9 %}
+  		{% for item in search.results limit: 9 %}
+          <div class="col-md-4 col-xs-12 col-sm-4">
+            <div class='row-fluid'>
+              <a href="{{ item.url }}">
+                <img class="img-responsive" src="{{item.featured_image.src | product_img_url: 'large' }}" alt="Generic placeholder image" style="width: 260px; height: 385px">
+              </a>
+            </div>
+                    <!--<div class='row-fluid'>-->
+            <div class="shop-image-text">
+              <a href="{{item.url}}"><span class="item-name-font-family">{{item.title}}</span></a><br>
+              <span class="item-price-font-family">{{item.price}}</span>
+            </div>
+            <!--</div>-->
+          </div>  
+        
+      {% endfor %}
+    <!-- End results --></div>
+  	{% endpaginate %}
+</div>
+    {% endif %}
   {% endif %}
-  {% endif %}
 
-  {% endpaginate %}
-  
   {% else %}
 
-  <div class="row">
-    <div class="span12 expanded-message">
-      <div class="search-field">
-        <form class="search" action="/search">
-          <input type="image" src="{{ 'icon-search.png' | asset_url }}" alt="Go" id="go">
-          <input type="text" name="q" class="search_box" placeholder="Search" value="" />
-        </form>
+    <div class="row">
+      <div class="span12 expanded-message">
+        
       </div>
     </div>
-  </div>
 
-  {% endif %}	
+{% endif %}	
 </div> <!-- /#search -->
+  

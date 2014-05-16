@@ -31,7 +31,7 @@
     {% unless current_product_found == false and forloop.last %}
       <div class="col-sm-6 col-xs-12 col-md-3">
         <a href={{product.url}} >
-        <img class="img-responsive" src="{{product.featured_image.src | product_img_url: '260x385' }}" alt="Generic placeholder image" style="width: 260px; height: 385px">
+        <img class="img-responsive" src="{{product.featured_image.src | product_img_url: 'large' }}" alt="Generic placeholder image" style="width: 260px; height: 385px">
         </a>
         </div>
     {% endunless %}
@@ -41,4 +41,3 @@
 </div>
 
 {% endif %}
-
